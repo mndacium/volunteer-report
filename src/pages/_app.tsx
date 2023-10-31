@@ -1,6 +1,15 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import { BaseLayout } from "@/views";
+import type { AppProps } from "next/app";
+import "./styles.css";
+import { theme } from "@/utils/theme";
+import { ThemeProvider } from "@mui/material";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider theme={theme}>
+      <BaseLayout>
+        <Component {...pageProps} />
+      </BaseLayout>
+    </ThemeProvider>
+  );
 }
