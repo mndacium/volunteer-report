@@ -11,8 +11,4 @@ export const navItems = [
     item: "Join us",
     href: "/download",
   },
-  {
-    item: "Admin log in",
-    href: "/sign-in",
-  },
 ];

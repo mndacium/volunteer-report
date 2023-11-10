@@ -1,0 +1,1 @@
+export { VolunteerDetailedPageView } from "./main";

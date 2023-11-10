@@ -3,8 +3,8 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { ButtonLink } from "./ui";
 import Image from "next/image";
+import { ButtonLink } from "@/components/button-link";
 
 export const HomePageView = () => (
   <Container maxWidth={false} sx={{ marginTop: "7rem" }}>
@@ -29,7 +29,7 @@ export const HomePageView = () => (
             src="https://images.pexels.com/photos/6646974/pexels-photo-6646974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             width={630}
             height={375}
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: "100%", height: "100%", borderRadius: "0.75rem" }}
           />
         </Box>
       </Stack>
@@ -40,7 +40,7 @@ export const HomePageView = () => (
             src="https://images.pexels.com/photos/6646974/pexels-photo-6646974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             width={630}
             height={375}
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: "100%", height: "100%", borderRadius: "0.75rem" }}
           />
         </Box>
         <Stack
