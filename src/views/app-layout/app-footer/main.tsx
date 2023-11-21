@@ -4,10 +4,24 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import { FooterWrapper, StyledLink } from "./styled";
-import { navItems } from "../navItems";
 import IconButton from "@mui/material/IconButton";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+
+const navItems = [
+  {
+    item: "Reports",
+    href: "/reports",
+  },
+  {
+    item: "Volunteers",
+    href: "/volunteers",
+  },
+  {
+    item: "Join us",
+    href: "/download",
+  },
+];
 
 export const Footer = () => {
   return (
