@@ -1,0 +1,1 @@
+export { ManageReportsPageView } from "./main";

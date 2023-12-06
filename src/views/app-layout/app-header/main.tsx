@@ -10,7 +10,7 @@ import Container from "@mui/material/Container";
 export const Header = () => {
   const router = useRouter();
 
-  const navItems = React.useMemo(
+  const userNavItems = React.useMemo(
     () => [
       {
         item: "Reports",
@@ -28,6 +28,32 @@ export const Header = () => {
         isActive: false,
       },
     ],
+    [router]
+  );
+
+  const adminNavItems = React.useMemo(
+    () => [
+      {
+        item: "Manage reports",
+        href: "/admin/reports",
+        isActive: router.pathname === "/admin/reports",
+      },
+      {
+        item: "Manage users",
+        href: "/admin/users",
+        isActive: router.pathname === "/admin/users",
+      },
+      {
+        item: "Manage categories",
+        href: "/admin/categories",
+        isActive: router.pathname === "/admin/categories",
+      },
+    ],
+    [router]
+  );
+
+  const isAdmin = React.useMemo(
+    () => router.pathname.includes("/admin"),
     [router]
   );
 
@@ -50,18 +76,22 @@ export const Header = () => {
             </Typography>
           </StyledLogoLink>
           <Box display="flex" gap="4rem" alignItems="center">
-            {navItems.map(({ item, href, isActive }) => (
-              <StyledLink
-                key={item}
-                href={href}
-                underline="none"
-                isActive={isActive}
-              >
-                <Typography>{item}</Typography>
-              </StyledLink>
-            ))}
-            <StyledLoginLink href="/sign-in" underline="none">
-              <Typography fontWeight="400">Log in</Typography>
+            {(isAdmin ? adminNavItems : userNavItems).map(
+              ({ item, href, isActive }) => (
+                <StyledLink
+                  key={item}
+                  href={href}
+                  underline="none"
+                  isActive={isActive}
+                >
+                  <Typography>{item}</Typography>
+                </StyledLink>
+              )
+            )}
+            <StyledLoginLink href={isAdmin ? "/" : "/login"} underline="none">
+              <Typography fontWeight="400">
+                {isAdmin ? "Log out" : "Log in"}
+              </Typography>
             </StyledLoginLink>
           </Box>
         </Toolbar>

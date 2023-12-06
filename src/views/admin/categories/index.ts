@@ -1,0 +1,1 @@
+export { ManageCategoriesPageView } from "./main";

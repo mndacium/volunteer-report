@@ -2,30 +2,39 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import { ButtonLink } from "../button-link";
 import Link from "@mui/material/Link";
+import { StyledButton } from "./styled";
+import { toast } from "react-toastify";
 
-interface Props {
-  report: {
+interface Report {
+  id: number;
+  name: string;
+  description: string;
+  destination: string;
+  categories: string;
+  purchaseValue: number;
+  img: string;
+  volunteer: {
     id: number;
     name: string;
-    description: string;
-    destination: string;
-    categories: string;
-    purchaseValue: number;
-    img: string;
-    volunteer: {
-      id: number;
-      name: string;
-      about: string;
-    };
+    about: string;
   };
+}
+
+interface Props {
+  report: Report;
+  reports?: Report[];
+  setReports?: (reports: Report[]) => void;
   shouldHideVolunteerName?: boolean;
+  isAdmin?: boolean;
 }
 
 export const ReportCard = ({
   report,
+  reports,
+  setReports,
   shouldHideVolunteerName = false,
+  isAdmin = false,
 }: Props) => (
   <Stack direction="row" columnGap={8}>
     <Box width="50%" maxHeight="500px">
@@ -41,7 +50,6 @@ export const ReportCard = ({
       <Typography variant="h5" color="text.secondary" fontWeight="700">
         {report.name}
       </Typography>
-
       {!shouldHideVolunteerName && (
         <Link href={`/volunteers/${report.volunteer.id} `} underline="hover">
           <Typography variant="h6" color="text.primary" fontWeight="700">
@@ -68,6 +76,20 @@ export const ReportCard = ({
       <Typography variant="h6" color="text.primary" fontWeight="700">
         Purchase value: ₴{report.purchaseValue}
       </Typography>
+      {isAdmin && (
+        <StyledButton
+          onClick={() => {
+            if (setReports && reports) {
+              setReports(
+                reports.filter((arrReport) => arrReport.id !== report.id)
+              );
+              toast.success("Report has been succesfully deleted");
+            }
+          }}
+        >
+          Delete
+        </StyledButton>
+      )}
     </Stack>
   </Stack>
 );
