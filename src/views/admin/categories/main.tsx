@@ -7,14 +7,20 @@ import { StyledButton } from "../common";
 import { toast } from "react-toastify";
 
 export const ManageCategoriesPageView = () => {
-  const [categories, setCategories] = React.useState(
-    Array(5)
-      .fill({})
-      .map((_val, index) => ({
-        id: index + 1,
-        name: `Category ${index + 1}`,
-      }))
-  );
+  const [categories, setCategories] = React.useState([
+    {
+      id: 1,
+      name: "Medicine",
+    },
+    {
+      id: 2,
+      name: "Trench candles",
+    },
+    {
+      id: 3,
+      name: "Hygiene",
+    },
+  ]);
 
   const [categoryName, setCategoryName] = React.useState("");
 

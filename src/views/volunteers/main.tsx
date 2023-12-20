@@ -4,15 +4,20 @@ import Container from "@mui/material/Container";
 import { VolunteerCard } from "./ui";
 import Grid from "@mui/material/Grid";
 
-const volunteers = Array(5)
-  .fill({})
-  .map((_val, index) => ({
-    id: index + 1,
-    name: "Volunteer",
-    about:
-      "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
-    img: "https://images.pexels.com/photos/6646974/pexels-photo-6646974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  }));
+const volunteers = [
+  {
+    id: 1,
+    name: "Polina Berest",
+    about: "Student of Kharkiv National University of Radio Electronics",
+    img: "/polinajpg.jpg",
+  },
+  {
+    id: 2,
+    name: "Taras Chmut",
+    about: `Head of the "Come Back Alive" Foundation.`,
+    img: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Taras_Chmut%2C_Kyiv_2021%2C_01.jpg",
+  },
+];
 
 export const VolunteersPageView = () => {
   return (

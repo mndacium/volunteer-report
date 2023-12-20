@@ -19,6 +19,11 @@ interface Props {
   setUsers: (users: User[]) => void;
 }
 
+export const moneyFormattingUAH = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "UAH",
+});
+
 export const ManageUserCard = ({
   user: { id, name, description, totalAmountOfMoney, totalReportsNumber },
   users,
@@ -40,7 +45,8 @@ export const ManageUserCard = ({
             Total reports number: {totalReportsNumber}
           </Typography>
           <Typography color="text.primary" fontWeight={600} width="100%">
-            Total amount of money: {totalAmountOfMoney}
+            Total amount of money:{" "}
+            {moneyFormattingUAH.format(totalAmountOfMoney)}
           </Typography>
         </Stack>
         <Stack flexDirection="column-reverse">

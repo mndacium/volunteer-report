@@ -18,7 +18,12 @@ export const LoginPageView = () => {
         </Stack>
         <Stack gap={3} width="100%">
           <StyledTextField label="Email" variant="outlined" fullWidth />
-          <StyledTextField label="Password" variant="outlined" fullWidth />
+          <StyledTextField
+            label="Password"
+            type="password"
+            variant="outlined"
+            fullWidth
+          />
         </Stack>
         <ButtonLink text="Log In" href="/admin/reports" />
       </Stack>

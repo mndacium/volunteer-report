@@ -23,7 +23,7 @@ export const VolunteerCard = ({
       <CardContent>
         <Stack gap={3}>
           <CardMedia
-            sx={{ height: 220, borderRadius: "0.5rem" }}
+            sx={{ height: 320, width: "100%", borderRadius: "0.5rem" }}
             image={img}
             title={name}
           />

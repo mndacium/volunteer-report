@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "@mui/material/Link";
 import { StyledButton } from "./styled";
 import { toast } from "react-toastify";
+import { moneyFormattingUAH } from "@/views/admin/users/ui/ManageUserCard";
 
 interface Report {
   id: number;
@@ -37,13 +38,13 @@ export const ReportCard = ({
   isAdmin = false,
 }: Props) => (
   <Stack direction="row" columnGap={8}>
-    <Box width="50%" maxHeight="500px">
+    <Box width="50%" maxHeight="500px" display="flex" justifyContent="center">
       <Image
         alt="volunteers photo"
-        src="https://images.pexels.com/photos/6646974/pexels-photo-6646974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        width={630}
+        src={report.img}
+        width={600}
         height={375}
-        style={{ width: "100%", height: "100%", borderRadius: "0.75rem" }}
+        style={{ height: "100%", borderRadius: "0.75rem" }}
       />
     </Box>
     <Stack direction="column" spacing={4} width="40%">
@@ -52,29 +53,29 @@ export const ReportCard = ({
       </Typography>
       {!shouldHideVolunteerName && (
         <Link href={`/volunteers/${report.volunteer.id} `} underline="hover">
-          <Typography variant="h6" color="text.primary" fontWeight="700">
+          <Typography variant="h6" color="text.secondary" fontWeight="600">
             {report.volunteer.name}
           </Typography>
         </Link>
       )}
       <Stack gap={1}>
-        <Typography variant="h6" fontWeight="700" color="text.primary">
+        <Typography fontSize="1.15rem" fontWeight="600" color="text.primary">
           Categories: {report.categories}
         </Typography>
       </Stack>
       <Stack gap={1}>
-        <Typography variant="h6" fontWeight="700" color="text.primary">
+        <Typography fontSize="1.15rem" fontWeight="600" color="text.primary">
           Description:
         </Typography>
-        <Typography variant="body1" color="text.primary">
+        <Typography fontSize="1.15rem" color="text.primary">
           {report.description}
         </Typography>
       </Stack>
-      <Typography variant="h6" color="text.primary" fontWeight="700">
+      <Typography fontSize="1.15rem" color="text.primary" fontWeight="600">
         Destination: {report.destination}
       </Typography>
-      <Typography variant="h6" color="text.primary" fontWeight="700">
-        Purchase value: ₴{report.purchaseValue}
+      <Typography fontSize="1.15rem" color="text.primary" fontWeight="600">
+        Purchase value: {moneyFormattingUAH.format(report.purchaseValue)}
       </Typography>
       {isAdmin && (
         <StyledButton

@@ -26,7 +26,7 @@ export const HomePageView = () => (
         <Box width="60%" maxHeight="750px">
           <Image
             alt="volunteers photo"
-            src="https://images.pexels.com/photos/6646974/pexels-photo-6646974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            src="/homePageImpact.jpg"
             width={630}
             height={375}
             style={{ width: "100%", height: "100%", borderRadius: "0.75rem" }}

@@ -9,39 +9,69 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { ButtonLink } from "@/components/button-link";
 import { ReportCard } from "@/components/report-card";
+import { moneyFormattingUAH } from "../admin/users/ui/ManageUserCard";
 
 const volunteer = {
   id: 1,
-  name: "Volunteer",
-  about:
-    "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
-  img: "https://images.pexels.com/photos/6646974/pexels-photo-6646974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  donateLink: "https://www.google.com/",
+  name: "Polina Berest",
+  about: "Student of Kharkiv National University of Radio Electronics",
+  img: "/polinajpg.jpg",
+  donateLink: "https://send.monobank.ua/jar/2xKEJ87NXq",
+  categories: "Medicine, Trench candles, Hygiene",
 };
 
 const statistic = {
-  numberOfReports: 27,
-  totalValue: 27000,
+  numberOfReports: 3,
+  totalValue: 32950,
 };
 
-const reports = Array(5)
-  .fill({})
-  .map((_val, index) => ({
-    id: index + 1,
-    name: "Test Report",
+const reports = [
+  {
+    id: 1,
+    name: "Trench candles",
     description:
-      "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
-    destination: "Test destination",
-    purchaseValue: 123.55,
-    categories: "test category",
-    img: "https://images.pexels.com/photos/6646974/pexels-photo-6646974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "6 boxes of trench candles for our soldiers and some goodies.The primary focus of the initiative is to provide our soldiers with essential trench candles. These candles serve as a source of warmth.In addition to the trench candles, the initiative includes the provision of sweets.",
+    destination: "AFU",
+    purchaseValue: 7750,
+    categories: "Trench candles",
+    img: "/candlesjpg.jpg",
     volunteer: {
-      id: index + 1,
-      name: "Volunteer",
-      about:
-        "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+      id: 1,
+      name: "Polina Berest",
+      about: "Student of Kharkiv National University of Radio Electronics",
     },
-  }));
+  },
+  {
+    id: 2,
+    name: "Dry showers",
+    description:
+      "The objective of this volunteer effort is to support soldiers by addressing their hygiene needs through the provision of portable, waterless shower facilities. ",
+    destination: "AFU",
+    purchaseValue: 5200,
+    categories: "Hygiene",
+    img: "/dry_shower.jpg",
+    volunteer: {
+      id: 1,
+      name: "Polina Berest",
+      about: "Student of Kharkiv National University of Radio Electronics",
+    },
+  },
+  {
+    id: 3,
+    name: "Tourniquets",
+    description:
+      "Recognizing the importance of well-equipped medical resources on the war, this initiative aims to enhance the medical capabilities of our soldiers and military hospitals.",
+    destination: "AFU",
+    purchaseValue: 20000,
+    categories: "Medicine",
+    img: "/tourniquet.jpg",
+    volunteer: {
+      id: 1,
+      name: "Polina Berest",
+      about: "Student of Kharkiv National University of Radio Electronics",
+    },
+  },
+];
 
 export const VolunteerPageView = () => {
   const router = useRouter();
@@ -62,7 +92,6 @@ export const VolunteerPageView = () => {
         <Typography
           variant="h4"
           fontWeight="700"
-          textTransform="uppercase"
           textAlign="center"
           color="text.primary"
         >
@@ -71,13 +100,18 @@ export const VolunteerPageView = () => {
         <div style={{ width: "68px" }} />
       </Stack>
       <Stack direction="row" columnGap={8}>
-        <Box width="50%" maxHeight="500px">
+        <Box
+          width="50%"
+          maxHeight="500px"
+          display="flex"
+          justifyContent="center"
+        >
           <Image
             alt="volunteers photo"
-            src="https://images.pexels.com/photos/6646974/pexels-photo-6646974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            width={630}
+            src={volunteer.img}
+            width={475}
             height={375}
-            style={{ width: "100%", height: "100%", borderRadius: "0.75rem" }}
+            style={{ height: "100%", borderRadius: "0.75rem" }}
           />
         </Box>
         <Stack direction="column" spacing={4} width="40%">
@@ -89,6 +123,15 @@ export const VolunteerPageView = () => {
               {volunteer.about}
             </Typography>
           </Stack>
+          <Stack gap={1}>
+            <Typography variant="h6" color="text.primary" fontWeight="700">
+              Categories:{" "}
+            </Typography>
+            <Typography variant="h6" color="text.secondary" fontWeight="700">
+              {volunteer.categories}
+            </Typography>
+          </Stack>
+
           <Stack gap={2}>
             <Typography variant="h6" color="text.primary" fontWeight="700">
               Statistic:
@@ -108,14 +151,14 @@ export const VolunteerPageView = () => {
                   reports
                 </Typography>
               </Stack>
-              <Stack gap={2}>
+              <Stack gap={2} alignItems="center">
                 <Typography
                   variant="h4"
                   textAlign="center"
                   color="text.secondary"
                   fontWeight="700"
                 >
-                  {statistic.totalValue}
+                  {moneyFormattingUAH.format(statistic.totalValue)}
                 </Typography>
                 <Typography variant="h5" color="text.primary" fontWeight="400">
                   Total value

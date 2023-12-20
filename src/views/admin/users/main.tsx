@@ -12,18 +12,23 @@ export const ManageUsersPageView = () => {
   const [isOrderDropdownOpened, setIsOrderDropdownOpened] =
     React.useState(false);
 
-  const [users, setUsers] = React.useState(
-    Array(5)
-      .fill({})
-      .map((_val, index) => ({
-        id: index + 1,
-        name: `User name ${index + 1}`,
-        description:
-          "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
-        totalReportsNumber: 2,
-        totalAmountOfMoney: 5725,
-      }))
-  );
+  const [users, setUsers] = React.useState([
+    {
+      id: 1,
+      name: "Polina Berest",
+      description:
+        "Student of Kharkiv National University of Radio Electronics",
+      totalReportsNumber: 3,
+      totalAmountOfMoney: 32950,
+    },
+    {
+      id: 2,
+      name: "Taras Chmut",
+      description: `Head of the "Come Back Alive" Foundation.`,
+      totalReportsNumber: 1,
+      totalAmountOfMoney: 226000000,
+    },
+  ]);
 
   const toggleOrderDropdownOpen = React.useCallback(
     () => setIsOrderDropdownOpened(!isOrderDropdownOpened),
